@@ -19,7 +19,7 @@ This layer depends on:
 Patches
 =======
 
-Please submit any patches against the meta-contaierization layer
+Please submit any patches against the meta-containerization layer
 to the maintainer:
 
 Maintainer: Josef Holzmayr <holzmayr@rsi-elektrotechnik.de>
@@ -56,5 +56,3 @@ other layers needed. e.g.:
 II. Misc
 ========
 
-The container images are technically examples on how to create your own,
-tailored to your specific needs.
