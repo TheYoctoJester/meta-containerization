@@ -1,0 +1,56 @@
+header:
+  version: 2
+
+machine: containerx86-64
+
+task: build
+
+repos:
+  meta-containerization:
+
+  poky:
+    url: https://git.yoctoproject.org/git/poky
+    refspec: 29f65bda6d2c9fea4adb125c4857ee64f9312b9f
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-openembedded:
+    url: http://git.openembedded.org/meta-openembedded
+    refspec: 4b3e87df56c177d8c5b8d744717f2f8548b4303a 
+    layers:
+      meta-oe:
+      meta-multimedia:
+      meta-networking:
+      meta-python:
+
+bblayers_conf_header:
+  standard: |
+    POKY_BBLAYERS_CONF_VERSION = "2"
+    BBPATH = "${TOPDIR}"
+    BBFILES ?= ""
+
+local_conf_header:
+  standard: |
+    CONF_VERSION = "1"
+
+  debug-tweaks: |
+    EXTRA_IMAGE_FEATURES = "debug-tweaks"
+
+  ipk: |
+    PACKAGE_CLASSES = "package_ipk"
+
+  libc: |
+    TCLIBC = "musl"
+
+  diskmon: |
+    BB_DISKMON_DIRS = "\
+        STOPTASKS,${TMPDIR},1G,100K \
+        STOPTASKS,${DL_DIR},1G,100K \
+        STOPTASKS,${SSTATE_DIR},1G,100K \
+        STOPTASKS,/tmp,100M,100K \
+        ABORT,${TMPDIR},100M,1K \
+        ABORT,${DL_DIR},100M,1K \
+        ABORT,${SSTATE_DIR},100M,1K \
+        ABORT,/tmp,10M,1K"

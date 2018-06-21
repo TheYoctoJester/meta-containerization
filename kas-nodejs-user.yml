@@ -1,0 +1,14 @@
+header:
+  version: 2
+  includes:
+    - kas.yml
+
+target: container-image-user-payload
+
+local_conf_header:
+  payload: |
+    PAYLOAD = "nodejs"
+    PAYLOAD_USER = "user"
+    PAYLOAD_UID = "1000"
+    PAYLOAD_GROUP = "group"
+    PAYLOAD_GID = "1000"
