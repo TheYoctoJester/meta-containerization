@@ -17,10 +17,10 @@ PAYLOAD_UID ?= "1000"
 PAYLOAD_GROUP ?= "group"
 PAYLOAD_GID ?= "1000"
 
-USERADD_PARAM_${PN} = "-u ${PAYLOAD_UID} -M ${PAYLOAD_USER}"
-GROUPADD_PARAM_${PN} = "-g ${PAYLOAD_GID} ${PAYLOAD_GROUP}"
+USERADD_PARAM:${PN} = "-u ${PAYLOAD_UID} -M ${PAYLOAD_USER}"
+GROUPADD_PARAM:${PN} = "-g ${PAYLOAD_GID} ${PAYLOAD_GROUP}"
 
-FILES_${PN} = "dummy"
+FILES:${PN} = "dummy"
 
 do_install () {
 	touch ${D}/dummy
